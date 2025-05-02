@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Code Editor</title>
+    <link rel="stylesheet" href="../CSS/cEditor.css">
+    <script src="https://kit.fontawesome.com/86abd7aba7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+   
+<body>
+    <div class="container">
+        <div class="left-section">
+            <label for="" class="code"><img src="../images/icons8-python-48.png" alt="">Python code</label>
+            <textarea id="codeEditor" placeholder="Write your Python code here..."></textarea>
+        </div>
+        <div class="right-section">
+            <label for="" class="input"><i class="fa-solid fa-keyboard"></i>&nbsp;Input</label>
+            <input type="text" id="userInput" placeholder="Enter input values for program">
+            <label for="" class="output"><i class="fa-solid fa-play"></i>&nbsp;Output</label>
+            <pre id="output">Output will appear here...</pre>
+            <div class="btn">
+            <button onclick="runCode()">Run</button>
+            <input type="text" id="fileName" placeholder="Enter file name (e.g., mycode.c)">
+            <button onclick="resetEditor()">Reset</button>
+            
+            <button onclick="saveFile()">Save</button>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        async function runCode() {
+            const code = document.getElementById("codeEditor").value;
+            const input = document.getElementById("userInput").value;
+            const outputElement = document.getElementById("output");
+            outputElement.textContent = "Running...";
+
+            const request = {
+                language_id: 71,
+                source_code: btoa(code),
+                stdin: btoa(input)
+            };
+
+            try {
+                let response = await fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+                        "X-RapidAPI-Key": "7ae996e6bbmsh71893cfc094d469p163fe2jsna94a7c60eb1c"
+                    },
+                    body: JSON.stringify(request)
+                });
+
+                let json = await response.json();
+                const token = json.token;
+                
+                let result;
+                do {
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    result = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true`, {
+                        method: "GET",
+                        headers: {
+                            "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+                            "X-RapidAPI-Key": "7ae996e6bbmsh71893cfc094d469p163fe2jsna94a7c60eb1c"
+                        }
+                    });
+                    result = await result.json();
+                } while (result.status.id <= 2);
+                
+                outputElement.textContent = atob(result.stdout || "No output or error");
+            } catch (error) {
+                outputElement.textContent = "Error running code.";
+            }
+        }
+
+        function saveFile() {
+            const fileName = document.getElementById("fileName").value.trim();
+            if (!fileName) {
+                alert("Please enter a file name before saving.");
+                return;
+            }
+            const code = document.getElementById("codeEditor").value;
+            const blob = new Blob([code], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = fileName;
+            a.click();
+        }
+
+        function resetEditor() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("output").textContent = "Output will appear here...";
+            document.getElementById("fileName").value = "";
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>

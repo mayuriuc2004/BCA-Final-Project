@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Course - Apna College</title>
+    <link rel="stylesheet" href="../CSS/java.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+    <script src="../JS/Script.js"></script>
+    <script src="../JS/navbar.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <section class="progress-container" style="margin-top: 100px;">
+        <label>Course Progress:</label>
+        <progress class="progress-bar" id="progressBar" value="0" max="100"></progress>
+        <p id="progressText">0% Completed</p>
+    </section>
+
+    <section class="videos-container">
+        <!-- Video 1 -->
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/_V33HCZWLDQ" allowfullscreen></iframe>
+            <div class="video-info">
+                <h2>JavaScript Advance - Part 1</h2>
+                <p>MINI-PROJECT-Stone, Paper, Scissor.</p>
+                <input type="checkbox" class="progress-check" data-index="1"> Mark as Completed
+            </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/N-O4w6PynGY" allowfullscreen></iframe>
+            <div class="video-info">
+                <h2>JavaScript Advance - Part 2</h2>
+                <p>Understand Java Classes and objects.</p>
+                <input type="checkbox" class="progress-check" data-index="2"> Mark as Completed
+            </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-box">
+            <iframe  src="https://www.youtube.com/embed/d3jXofmQm44" allowfullscreen frameborder="0" loading="lazy"></iframe>
+            <div class="video-info">
+                <h2>JavaScript Advance - Part 3</h2>
+                <p>Learn about Callbacks, promises and Async Await.</p>
+                <input type="checkbox" class="progress-check" data-index="3"> Mark as Completed
+            </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/CyGodpqcid4" allowfullscreen frameborder="0" loading="lazy"></iframe>
+            <div class="video-info">
+                <h2>JavaScript Advance - Part 4</h2>
+                <p>Fetch API with project.</p>
+                <input type="checkbox" class="progress-check" data-index="4"> Mark as Completed
+            </div>
+        </div>
+
+    </section>
+
+    <script src="../JS/java.js"></script>
+</body>
+</html>

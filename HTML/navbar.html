@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/Style.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+</head>
+<body>
+    <nav>
+        <div class="container nav_container">
+        <ul class="navbar">
+            <li><a href="#" class="logo"><img src="../images/Logo VirtuMind (1).png" alt=""></a></li>
+            <li><a href="Courses.html" class="">Explore</a></li>
+            <li><div class="search-container hideOnMobile">
+                <div class="row">
+                    <input type="text" class="search-input" id="searchBox" placeholder="What do you want to learn?" onkeyup="filterCourses()" autocomplete="off">
+                    🔍
+                    <div class="dropdown-content2" id="courseList"></div>
+                </div>
+                
+            </div></li>
+            <li><a href="Index.php" class="hideOnMobile">Home</a></li>
+            <li><a href="About.php" class="hideOnMobile">About</a></li>
+            <li><a href="editorHome.html" class="hideOnMobile">Editor</a></li>
+            <li><a href="contact.php"class="hideOnMobile">Contact Us</a></li>
+            <li><a href="logout.php">Logout</a></li>
+            <li><a href="admin.php"class="hideOnMobile">Admin</a></li>
+            <li><a href="profile.php" class="hideOnMobile">Profile</a></li>
+            
+            <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+        <ul class="sidebar">
+            <li onclick = hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li><a href="profile.php">User Profile</a></li>
+            <li><a href="Index.php">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="About.php">About</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="logout.php" >LogOut</a></li>
+            <li><a href="admin.php">Admin</a></li>
+        </ul>
+        </div>
+    </nav>
+    <script src="../JS/Script.js"></script>
+    <script src="../JS/navbar.js"></script>
+</body>
+</html>
